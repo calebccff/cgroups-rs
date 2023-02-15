@@ -356,6 +356,12 @@ pub fn auto() -> Box<dyn Hierarchy> {
     }
 }
 
+pub fn custom_v2(root: &str) -> Box<V2> {
+    Box::new(V2 {
+        root: root.to_string(),
+    })
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
