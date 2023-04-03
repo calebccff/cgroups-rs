@@ -307,7 +307,7 @@ impl Default for V2 {
     }
 }
 
-pub const UNIFIED_MOUNTPOINT: &str = "/sys/fs/cgroup";
+pub const UNIFIED_MOUNTPOINT: &str = "/sys/fs/cgroup/unified";
 
 #[cfg(any(
     all(target_os = "linux", not(target_env = "musl")),
@@ -330,6 +330,8 @@ pub const INIT_CGROUP_PATHS: &str = "/proc/1/cgroup";
 
 #[cfg(all(target_os = "linux", target_env = "musl"))]
 pub fn is_cgroup2_unified_mode() -> bool {
+    return true;
+
     let lines = fs::read_to_string(INIT_CGROUP_PATHS);
     if lines.is_err() {
         return false;

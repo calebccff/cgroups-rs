@@ -494,7 +494,7 @@ impl Cgroup {
     }
 }
 
-pub const UNIFIED_MOUNTPOINT: &str = "/sys/fs/cgroup";
+pub const UNIFIED_MOUNTPOINT: &str = "/sys/fs/cgroup/unified";
 
 fn enable_controllers(controllers: &[String], path: &Path) {
     let f = path.join("cgroup.subtree_control");
@@ -528,6 +528,8 @@ fn create_v2_cgroup(
     } else {
         supported_controllers()
     };
+
+    //dbg!(&controllers);
 
     let mut fp = root;
 
